@@ -9,25 +9,20 @@ import cors from "cors";
 import pdfRouter from "./routes/pdf_route.js";
 import paymentRouter from "./routes/paymentRoute.js";
 
-
 const app = express();
 const port = process.env.PORT || 8000;
 
-
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173", "https://exam-notes-ai-eight.vercel.app"],
     credentials: true,
-  })
+  }),
 );
-
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
 app.use(cookieParser());
-
 
 app.get("/", (req, res) => {
   res.json({
@@ -39,7 +34,7 @@ app.get("/", (req, res) => {
 app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
 app.use("/api/notes", notesRouter);
-app.use("/api/pdf",pdfRouter);
+app.use("/api/pdf", pdfRouter);
 app.use("/api/payment", paymentRouter);
 
 // START SERVER

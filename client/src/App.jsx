@@ -9,7 +9,7 @@ import ScrollToTop from './components/ScrollToTop.jsx'
 import { useEffect } from 'react'
 import { getCurrentUser } from './services/api.js'
 import { useDispatch, useSelector } from 'react-redux'
-export const serverUrl = "http://localhost:8000"
+export const serverUrl = import.meta.env.VITE_BACKEND_URL ||  "http://localhost:8000";
 
 const App = () => {
   const dispatch = useDispatch();
